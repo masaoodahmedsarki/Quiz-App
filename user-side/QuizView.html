@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+            padding: 30px 20px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 26px;
+            margin-bottom: 6px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        /* Quiz Cards */
+        #quizList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            min-height: 160px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(109, 40, 217, 0.18);
+            border-color: #8b5cf6;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #ede9fe;
+            color: #6d28d9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .container {
+                margin-top: 25px;
+            }
+
+            .section-title h2 {
+                font-size: 22px;
+            }
+
+            #quizList {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Welcome to Quiz Dashboard 👋</h1>
+            <p>Choose a quiz and test your knowledge.</p>
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="section-title">
+            <h2>Available Quizzes</h2>
+            <p>Select a quiz below to get started.</p>
+        </div>
+
+        <div id="quizList"></div>
+
+    </main>
+
+
+    <footer>
+        © 2026 Quiz App • Learn. Practice. Improve.
+    </footer>
+
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>
+
+
+    <script>
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDMdzo8gfTmhrxa9jC4mvntOnbusEfdI4Y",
+            authDomain: "quiz-app-50c35.firebaseapp.com",
+            databaseURL: "https://quiz-app-50c35-default-rtdb.firebaseio.com",
+            projectId: "quiz-app-50c35",
+            storageBucket: "quiz-app-50c35.firebasestorage.app",
+            messagingSenderId: "508326349807",
+            appId: "1:508326349807:web:6236b0c074dee40bd3041a"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+
+
+    <script src="QuizView.js"></script>
+
+</body>
+</html>
